@@ -1,0 +1,23 @@
+{
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "vite build",
+    "preview": "vite preview --host 127.0.0.1"
+  },
+  "dependencies": {
+    "@douyinfe/semi-icons": "2.96.0",
+    "@douyinfe/semi-illustrations": "2.96.0",
+    "@douyinfe/semi-ui": "2.96.0",
+    "@vitejs/plugin-react": "4.3.4",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-router-dom": "6.23.0",
+    "sass": "1.77.2",
+    "typescript": "5.4.5",
+    "vite": "4.5.14"
+  },
+  "devDependencies": {
+    "@types/react": "18.2.66",
+    "@types/react-dom": "18.2.22"
+  }
+}

@@ -1,0 +1,349 @@
+.panelContainer {
+  position: fixed;
+  right: 360px;
+  bottom: 0;
+  width: 600px;
+  height: 640px;
+  max-height: 100vh;
+  background-color: var(--semi-color-bg-0);
+  box-shadow: -4px -4px 16px rgba(0, 0, 0, 0.08), 0 -4px 16px rgba(0, 0, 0, 0.04);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.panelHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px 8px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--semi-color-text-0);
+  flex-shrink: 0;
+  
+  .closeIcon {
+    cursor: pointer;
+    color: var(--semi-color-text-2);
+    display: flex;
+    align-items: center;
+    &:hover {
+      color: var(--semi-color-text-0);
+    }
+  }
+}
+
+.panelBody {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.spinContainer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+
+  :global(.semi-spin-children) {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+}
+
+.fixedContent {
+  padding: 0 24px;
+  flex-shrink: 0;
+}
+
+// Explicit height bypasses any broken flex chain inside Semi Spin's nested wrappers.
+// 360px = panelContainer 640px − header(~50) − fixedContent(~170) − footer(~60).
+// Clamped via min() so a short viewport (e.g. ~600px) still shows a small scroll area.
+.scrollableContent {
+  padding: 0 24px 24px;
+  overflow-y: auto;
+  height: calc(min(100vh, 640px) - 280px);
+}
+
+.mainTabSwitcher {
+  display: inline-flex;
+  background-color: var(--semi-color-fill-0);
+  border: 1px solid var(--semi-color-border);
+  border-radius: 8px;
+  padding: 2px;
+  margin-bottom: 24px;
+  
+  .mainTabItem {
+    padding: 6px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--semi-color-text-2);
+    cursor: pointer;
+    transition: all 0.2s;
+    
+    &.mainTabActive {
+      background-color: var(--semi-color-bg-0);
+      color: var(--semi-color-primary);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+    }
+  }
+}
+
+.panelFooter {
+  padding: 12px 24px;
+  border-top: 1px solid var(--semi-color-border);
+  background-color: var(--semi-color-bg-0);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+  position: relative;
+  z-index: 2;
+}
+
+.warningControl {
+  border-color: var(--semi-color-danger) !important;
+  &:hover, &:focus-within {
+    border-color: var(--semi-color-danger) !important;
+  }
+  
+  :global {
+    .semi-input-wrapper {
+      border-color: var(--semi-color-danger) !important;
+    }
+  }
+}
+
+.warningText {
+  color: var(--semi-color-danger);
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.formLabel {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  color: var(--semi-color-text-0);
+  margin-bottom: 8px;
+  font-size: 14px;
+  
+  .asterisk {
+    color: var(--semi-color-danger);
+    margin-left: 4px;
+  }
+}
+
+.userInfoBlock {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--semi-color-fill-0);
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin-bottom: 24px;
+}
+
+.userInfoContent {
+  display: flex;
+  align-items: center;
+  
+  .avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 12px;
+  }
+  
+  .userDetails {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    
+    .userName {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--semi-color-text-0);
+      line-height: 20px;
+    }
+    
+    .userId {
+      font-size: 12px;
+      color: var(--semi-color-text-2);
+      line-height: 16px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+  }
+}
+
+.userInfoClear {
+  cursor: pointer;
+  color: var(--semi-color-text-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: var(--semi-color-fill-2);
+  
+  &:hover {
+    background-color: var(--semi-color-fill-3);
+    color: var(--semi-color-text-0);
+  }
+  
+  svg {
+    width: 12px;
+    height: 12px;
+  }
+}
+
+.radioCards {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.radioCard {
+  border: 1px solid var(--semi-color-border);
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  transition: all 0.2s;
+  background-color: var(--semi-color-bg-0);
+  
+  &:hover {
+    background-color: var(--semi-color-fill-0);
+  }
+
+  &.selectedCard {
+    border: 1px solid var(--semi-color-primary);
+    background-color: #F0F4FF;
+  }
+  
+  .cardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  .cardMainInfo {
+    display: flex;
+    flex-direction: column;
+    
+    .titleRow {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 4px;
+      line-height: 20px;
+      
+      .title {
+        font-weight: 600;
+        color: var(--semi-color-text-0);
+        font-size: 14px;
+      }
+    }
+    
+    .subtitle {
+      color: var(--semi-color-text-2);
+      font-size: 14px;
+      line-height: 20px;
+    }
+  }
+
+  .cardRightActions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .expandedDetails {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    
+    .detailRow {
+      display: flex;
+      align-items: flex-start;
+      font-size: 14px;
+      
+      .detailLabel {
+        color: var(--semi-color-text-2);
+        width: 100px;
+        flex-shrink: 0;
+      }
+      
+      .detailValue {
+        color: var(--semi-color-text-0);
+        flex: 1;
+        line-height: 20px;
+      }
+    }
+  }
+}
+
+.activeTag {
+  background-color: var(--semi-color-primary-light-default);
+  color: var(--semi-color-primary);
+  padding: 0 6px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.expandIconWrapper {
+  padding: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  color: var(--semi-color-text-2);
+  transition: all 0.2s;
+  
+  &:hover {
+    background-color: var(--semi-color-fill-1);
+    color: var(--semi-color-text-0);
+  }
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: var(--semi-color-text-0);
+  font-weight: 500;
+  
+  .icon {
+    cursor: pointer;
+    color: var(--semi-color-text-2);
+    display: flex;
+    align-items: center;
+    &:hover {
+      color: var(--semi-color-text-0);
+    }
+  }
+}
+
+.hintText {
+  color: var(--semi-color-text-2);
+  font-size: 12px;
+  line-height: 1.4;
+  margin-top: 8px;
+}

@@ -1,0 +1,28 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--semi-font-family-regular);
+}
+
+/* Review mode animations */
+@keyframes review-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 4px rgba(217, 119, 87, 0.18);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(217, 119, 87, 0.10);
+    transform: scale(1.02);
+  }
+}
+
+@keyframes review-pulse-dot {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.25);
+    opacity: 0.85;
+  }
+}

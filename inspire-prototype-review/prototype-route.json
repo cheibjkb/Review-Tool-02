@@ -1,0 +1,172 @@
+{
+  "state_name": "Home Page",
+  "state_url": "/",
+  "children": [
+    {
+      "interaction": "Click on the '+ Add' hotspot",
+      "state_name": "Showcase Modal - Initial",
+      "state_url": "/?modal=showcase",
+      "children": [
+        {
+          "interaction": "Click on the modal overlay or close button",
+          "state_name": "Home Page (Modal Closed)",
+          "state_url": "/"
+        },
+        {
+          "interaction": "Submit empty form",
+          "state_name": "Showcase Modal - Error State",
+          "state_url": "/?modal=showcase&error=true"
+        },
+        {
+          "interaction": "Enter '1111111111' in the UID input (wait 1s)",
+          "state_name": "Showcase Modal - Found (Select live event)",
+          "state_url": "/?modal=showcase&uid=1111111111&state=found&tab=select",
+          "children": [
+            {
+              "interaction": "Click on the expand icon of the first event",
+              "state_name": "Showcase Modal - Event Expanded Unselected",
+              "state_url": "/?modal=showcase&uid=1111111111&state=found&tab=select&expanded=1"
+            },
+            {
+              "interaction": "Click on the first event radio",
+              "state_name": "Showcase Modal - Event Selected",
+              "state_url": "/?modal=showcase&uid=1111111111&state=found&tab=select&selected=1&expanded=1",
+              "children": [
+                {
+                  "interaction": "Click on the expand icon to collapse",
+                  "state_name": "Showcase Modal - Event Selected & Collapsed",
+                  "state_url": "/?modal=showcase&uid=1111111111&state=found&tab=select&selected=1"
+                },
+                {
+                  "interaction": "Click Submit",
+                  "state_name": "Main Page - Select Submit Success",
+                  "state_url": "/?state=submit-select-success&uid=1111111111&selected=1",
+                  "children": [
+                    {
+                      "interaction": "Click Edit icon on the creator card",
+                      "state_name": "Showcase Modal - Select Edit Mode",
+                      "state_url": "/?modal=showcase&uid=1111111111&state=found&tab=select&selected=1&expanded=1"
+                    },
+                    {
+                      "interaction": "Click Delete icon on the creator card",
+                      "state_name": "Main Page - Select Delete Confirmation",
+                      "state_url": "/?state=submit-select-success&uid=1111111111&selected=1&delete_confirm=true",
+                      "children": [
+                        {
+                          "interaction": "Click Confirm Delete",
+                          "state_name": "Main Page - Empty (After Delete)",
+                          "state_url": "/"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "interaction": "Click on the second event radio",
+                  "state_name": "Showcase Modal - Second Event Selected & Expanded",
+                  "state_url": "/?modal=showcase&uid=1111111111&state=found&tab=select&selected=2&expanded=1,2"
+                }
+              ]
+            },
+            {
+              "interaction": "Click Submit without selection",
+              "state_name": "Showcase Modal - Found (Submit Error)",
+              "state_url": "/?modal=showcase&uid=1111111111&state=found&tab=select&error=submit"
+            },
+            {
+              "interaction": "Click 'Create live event' tab",
+              "state_name": "Showcase Modal - Found (Create live event)",
+              "state_url": "/?modal=showcase&uid=1111111111&state=found&tab=create",
+              "children": [
+                {
+                  "interaction": "Click Submit without time range",
+                  "state_name": "Showcase Modal - Found (Create Error)",
+                  "state_url": "/?modal=showcase&uid=1111111111&state=found&tab=create&error=time-range"
+                },
+                {
+                  "interaction": "Fill time range",
+                  "state_name": "Showcase Modal - Found (Create Time Filled)",
+                  "state_url": "/?modal=showcase&uid=1111111111&state=found&tab=create&time=filled",
+                  "children": [
+                    {
+                      "interaction": "Click Submit",
+                      "state_name": "Main Page - Create Submit Success",
+                      "state_url": "/?state=submit-create-success&uid=1111111111&time=filled",
+                      "children": [
+                        {
+                          "interaction": "Click Edit icon on the creator card",
+                          "state_name": "Showcase Modal - Create Edit Mode (Found)",
+                          "state_url": "/?modal=showcase&uid=1111111111&state=found&tab=create&time=filled"
+                        },
+                        {
+                          "interaction": "Click Delete icon on the creator card",
+                          "state_name": "Main Page - Create Delete Confirmation (Found)",
+                          "state_url": "/?state=submit-create-success&uid=1111111111&time=filled&delete_confirm=true",
+                          "children": [
+                            {
+                              "interaction": "Click Confirm Delete",
+                              "state_name": "Main Page - Empty (After Delete)",
+                              "state_url": "/"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "interaction": "Enter '2222222222' in the UID input (wait 1.5s)",
+          "state_name": "Showcase Modal - Not Found (Create live event)",
+          "state_url": "/?modal=showcase&uid=2222222222&state=not-found&tab=create",
+          "children": [
+            {
+              "interaction": "Click 'Select live event' tab",
+              "state_name": "Showcase Modal - Empty State",
+              "state_url": "/?modal=showcase&uid=2222222222&state=empty&tab=select"
+            },
+            {
+              "interaction": "Click Submit without time range",
+              "state_name": "Showcase Modal - Not Found (Create Error)",
+              "state_url": "/?modal=showcase&uid=2222222222&state=not-found&tab=create&error=time-range"
+            },
+            {
+              "interaction": "Fill time range",
+              "state_name": "Showcase Modal - Not Found (Create Time Filled)",
+              "state_url": "/?modal=showcase&uid=2222222222&state=not-found&tab=create&time=filled",
+              "children": [
+                {
+                  "interaction": "Click Submit",
+                  "state_name": "Main Page - Create Submit Success (Not Found)",
+                  "state_url": "/?state=submit-create-success&uid=2222222222&time=filled",
+                  "children": [
+                    {
+                      "interaction": "Click Edit icon on the creator card",
+                      "state_name": "Showcase Modal - Create Edit Mode",
+                      "state_url": "/?modal=showcase&uid=2222222222&state=not-found&tab=create&time=filled"
+                    },
+                    {
+                      "interaction": "Click Delete icon on the creator card",
+                      "state_name": "Main Page - Create Delete Confirmation (Not Found)",
+                      "state_url": "/?state=submit-create-success&uid=2222222222&time=filled&delete_confirm=true",
+                      "children": [
+                        {
+                          "interaction": "Click Confirm Delete",
+                          "state_name": "Main Page - Empty (After Delete)",
+                          "state_url": "/"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
